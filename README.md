@@ -249,14 +249,15 @@
 ## Adding libs for entity framework
 
 - Get it from: [https://www.nuget.org/packages/Microsoft.EntityFrameworkCore/7.0.3]
-
+- StringConn: 
+    - `builder.Services.AddSqlServer<ToDoContext>("Data Source=KRAUSP52\\SQLEXPRESS;Initial Catalog=TodoDb;Trusted_Connection=True;TrustServerCertificate=true;");`
 
 ## Services
 
 - Add business Logic to communicate with DB (using EF in this case)
 - Actions that will be executed from the controllers
 - Controllers will consume these services and execute these actions from services
-
+- the idea is build an scalable project, so controllers can call services, and the logic will be separated
 
 
 
@@ -273,16 +274,16 @@
 ### Save Async
 - 
     ```cs
-        public async void Save(Category c) 
+        public async Task Save(Category c) 
         {
             await context.SaveChangesAsync(); 
         }
     ```
 
-### Update
+### Update Async
 - 
     ```cs
-        public async void Update(Guid id, Category c)
+        public async Task Update(Guid id, Category c)
         {
             var actualCategory = context.Categories.Find(id);
 
@@ -312,7 +313,18 @@
         }
     ```
 
+### Interface to export Services
 
+- Sync: 
+    ```cs
+        public interface ICategoryService
+        {
+            IEnumerable<Category> Get();
+            void Save(Category c);
+            Task Update(Guid id, Category c);
+            void Delete(Guid id);
+        }
+    ```
 
 
 
