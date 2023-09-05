@@ -246,6 +246,71 @@
 
 
 
+## Adding libs for entity framework
+
+- Get it from: [https://www.nuget.org/packages/Microsoft.EntityFrameworkCore/7.0.3]
+
+
+## Services
+
+- Add business Logic to communicate with DB (using EF in this case)
+- Actions that will be executed from the controllers
+- Controllers will consume these services and execute these actions from services
+
+
+
+
+### Save Sync
+- 
+    ```cs
+        public void Save(Category c)
+        {
+            context.Add(c);
+            context.SaveChanges();
+        }
+    ```
+
+### Save Async
+- 
+    ```cs
+        public async void Save(Category c) 
+        {
+            await context.SaveChangesAsync(); 
+        }
+    ```
+
+### Update
+- 
+    ```cs
+        public async void Update(Guid id, Category c)
+        {
+            var actualCategory = context.Categories.Find(id);
+
+            if (actualCategory != null)
+            {
+                actualCategory.CategoryName = c.CategoryName;
+                actualCategory.CategoryDescription = c.CategoryDescription;
+                actualCategory.CategoryLevel = c.CategoryLevel;
+
+                await context.SaveChangesAsync();
+            }
+        }
+    ```
+
+
+### Delete
+- 
+    ```cs
+        public void Delete(Guid id)
+        {
+            var actualCategory = context.Categories.Find(id);
+            if (actualCategory != null)
+            {
+                context.Remove(actualCategory);
+                context.SaveChanges();
+            }
+        }
+    ```
 
 
 
@@ -253,10 +318,10 @@
 
 
 
+## Fluent api detail
 
-
-
-
+- Cascade Delete:
+    - `modelBuilder.Entity<Profile>().HasOptional(c => c.ProfileImages).WithOptionalDependent().WillCascadeOnDelete(true);`
 
 # Minimal API (dotnet new web)
 
@@ -271,7 +336,7 @@
 
 - **Web API** es para proyectos mas estructurados con multiples endpoints y con una sencillez para escalar. Se puede usar para un solo endpoint y nos da la posibilidad de crecerlo como sea necesario.
 
-- 
+
 
 
 
