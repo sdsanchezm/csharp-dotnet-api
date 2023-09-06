@@ -216,6 +216,7 @@
 
 - to configure the default level, gotta modify the appsettings.json file
 - documentation [https://learn.microsoft.com/en-us/aspnet/core/fundamentals/logging/?view=aspnetcore-6.0]
+- documentation [https://learn.microsoft.com/en-us/dotnet/core/extensions/logging?tabs=command-line]
 
 
 ## Documenting APIs with Swagger
@@ -249,7 +250,7 @@
 ## Adding libs for entity framework
 
 - Get it from: [https://www.nuget.org/packages/Microsoft.EntityFrameworkCore/7.0.3]
-- StringConn: 
+- StringConn without usr and pwrt: 
     - `builder.Services.AddSqlServer<ToDoContext>("Data Source=KRAUSP52\\SQLEXPRESS;Initial Catalog=TodoDb;Trusted_Connection=True;TrustServerCertificate=true;");`
 
 ## Services
