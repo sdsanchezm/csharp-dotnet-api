@@ -42,6 +42,7 @@ namespace webapi_project_functional
                 todo.Property(p => p.ToDoDescription).IsRequired(false);
                 todo.Property(p => p.ToDoPriority);
                 todo.Property(p => p.ToDoCreationDate);
+                //todo.Property(p => p.Category).IsRequired(false);
                 todo.Ignore(p => p.Summary);
                 // initial data
                 todo.HasData(listTodoInitial);

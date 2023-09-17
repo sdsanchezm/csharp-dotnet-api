@@ -24,12 +24,12 @@ namespace webapi_project_functional.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] ToDo t)
         {
-            if (ModelState.IsValid)
-            {
-                _todoServiceLocal.Save(t);
-                return Ok();
-            }
-            return BadRequest();
+            //t.Category = new Category();
+            //if (!ModelState.IsValid)
+            //    return BadRequest(ModelState);
+
+            _todoServiceLocal.Save(t);
+            return Ok();
         }
 
         [HttpPut("{id}")]

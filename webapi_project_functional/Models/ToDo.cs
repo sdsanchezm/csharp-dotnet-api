@@ -1,5 +1,8 @@
 ﻿
 
+using System.Diagnostics.CodeAnalysis;
+using System.Text.Json.Serialization;
+
 namespace webapi_project_functional.Models
 {
     public class ToDo
@@ -10,8 +13,10 @@ namespace webapi_project_functional.Models
         public string ToDoDescription { get; set; }
         public Priority ToDoPriority { get; set; }
         public DateTime ToDoCreationDate { get; set; }
-        public virtual Category Category { get; set; }
-        public string Summary { get; set; }
+        //[JsonIgnore]
+        [AllowNull]
+        public virtual Category Category { get; set; } = null;
+        public string Summary { get; set; } = "";
 
     }
 

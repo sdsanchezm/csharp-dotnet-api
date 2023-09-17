@@ -19,13 +19,32 @@ namespace webapi_project_functional.Services
 
         public async Task Save(ToDo t)
         {
-            _dbContext.ToDos.Add(t);
+
+            var categ = _dbContext.Categories.Where(c => c.CategoryId  == t.CategoryId).FirstOrDefault();
+            //_dbContext.Categories.Find(p => p.id == t.CategoryId.ToString());
+
+            //t.ToDoId = Guid.NewGuid();
+            t.ToDoId = Guid.Parse(t.ToDoId.ToString());
+            t.CategoryId = Guid.Parse(t.CategoryId.ToString());
+            t.ToDoCreationDate = DateTime.Now;
+            t.Category = categ;
+
+
+            _dbContext.Add(t);
             await _dbContext.SaveChangesAsync();
+
+            //listTodoInitial.Add(new ToDo() { ToDoId =
+            //    Guid.Parse("2fd96e87-dba7-4f3f-972a-061956553d08"),
+            //    CategoryId = Guid.Parse("cc24924b-7626-4ab7-b06d-d292880d30ff"),
+            //    ToDoName = "Email Reminder",
+            //    ToDoDescription = "Send Email to clients",
+            //    ToDoCreationDate = DateTime.Now,
+            //    ToDoPriority = Priority.High });
         }
 
         public async Task Update(Guid id, ToDo t)
         {
-            var actualTodo = await _dbContext.ToDos.FindAsync(id);
+            var actualTodo = _dbContext.ToDos.Find(id);
 
             if (actualTodo != null)
             {

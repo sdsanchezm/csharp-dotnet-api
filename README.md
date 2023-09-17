@@ -110,9 +110,6 @@
     5. Middleware Order:
 
 
-
-
-
 ### DTO
 
 - DTO son clases que tiene como función guardar datos que se van a transferir dentro de la aplicación con una estructura personalizada
@@ -370,10 +367,29 @@
     - `dotnet watch run`
 - compile project
     - `dotnet build` 
-- restaura dependencias y librerias
+- restore dependencies and libraries
     - `dotnet restore`
-- permite monitorear los cambios en tiempo real
+- clean the project
     - `dotnet clean`
+
+~~~mermaid
+flowchart
+    Model["models"]
+    FluentConfig
+    Context["*Context.cs"]
+    Database["- Database
+    - EF commands"]
+    Service["*Service.cs"]
+    Controller["*Controller.cs"]
+    Program["Program Directives"]
+    Model --> Database
+    Database --> Context
+    Context --> Service
+    Service --> Controller
+    Controller --> Program
+    FluentConfig --> Database
+~~~
+
 
 ## Documentation
 
