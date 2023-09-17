@@ -249,6 +249,9 @@
 - Get it from: [https://www.nuget.org/packages/Microsoft.EntityFrameworkCore/7.0.3]
 - StringConn without usr and pwrt: 
     - `builder.Services.AddSqlServer<ToDoContext>("Data Source=KRAUSP52\\SQLEXPRESS;Initial Catalog=TodoDb;Trusted_Connection=True;TrustServerCertificate=true;");`
+- StringConn with usr and pwrt
+    - `"connExamsdb": "Data Source=KRAUSYXX\\SQLEXPR3SS;Initial Catalog=ExamsDb;user id=admin;password=passw0rd"`
+    
 
 ## Services
 
