@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using webapi_project_functional;
 using webapi_project_functional.Services;
 using webapi_project_functional.Controllers;
+using webapi_project_functional.Data;
 
 internal class Program
 {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using webapi_project_functional.Models;
 
-namespace webapi_project_functional
+namespace webapi_project_functional.Data
 {
     public class ToDoContext : DbContext
     {

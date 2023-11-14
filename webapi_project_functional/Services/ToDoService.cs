@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Diagnostics;
+using webapi_project_functional.Data;
 using webapi_project_functional.Models;
 
 namespace webapi_project_functional.Services
